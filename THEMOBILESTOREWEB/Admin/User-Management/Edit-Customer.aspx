@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Edit Existing Vendor" Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true" CodeFile="Edit-Vendor.aspx.cs" Inherits="Admin_User_Management_Edit_Vendor" %>
+﻿<%@ Page Title="Edit Existing Customer" Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true" CodeFile="Edit-Customer.aspx.cs" Inherits="Admin_User_Management_Edit_Vendor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <!-- inject:js -->
@@ -22,7 +22,7 @@
             <div class="card-body">
                 <h4 class="card-title"><%= Page.Title %></h4>
                 <p class="card-description">
-                    Vendor info
+                    Customer info
                 </p>
                 <div class="row">
 
@@ -38,12 +38,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Name</label>
+                            <label class="col-sm-3 col-form-label">CST Name</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
                                 <small>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Vendor Name is Required" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName" ValidationGroup="sub" ForeColor="#ff5666"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Customer Name is Required" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtName" ValidationGroup="sub" ForeColor="#ff5666"></asp:RequiredFieldValidator>
                                 </small>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Email</label>
+                            <label class="col-sm-3 col-form-label">CST Email</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
@@ -65,7 +65,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Phone</label>
+                            <label class="col-sm-3 col-form-label">CST Phone</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtPhone" TextMode="Phone" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
@@ -78,17 +78,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Phone Alternate</label>
-
-                            <div class="col-sm-9">
-                                <asp:TextBox ID="txtPhone2" TextMode="Phone" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Address</label>
+                            <label class="col-sm-3 col-form-label">CST Address</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtAddress" TextMode="MultiLine" runat="server" CssClass="form-control"></asp:TextBox>
@@ -101,7 +91,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD City</label>
+                            <label class="col-sm-3 col-form-label">CST City</label>
 
                             <div class="col-sm-9">
                                 <asp:DropDownList ID="drpCity" AutoPostBack="true" OnSelectedIndexChanged="drpCity_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -114,7 +104,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD State</label>
+                            <label class="col-sm-3 col-form-label">CST State</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtState" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
@@ -127,7 +117,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Pincode</label>
+                            <label class="col-sm-3 col-form-label">CST Pincode</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtPincode" runat="server" MaxLength="6" CssClass="form-control"></asp:TextBox>
@@ -140,7 +130,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Country</label>
+                            <label class="col-sm-3 col-form-label">CST Country</label>
 
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtCountry" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
@@ -150,62 +140,20 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD GST No</label>
+                            <label class="col-sm-3 col-form-label">CST Country</label>
 
                             <div class="col-sm-9">
-                                <asp:TextBox ID="txtGST" MaxLength="20" runat="server" CssClass="form-control"></asp:TextBox>
-                                <small>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Vendor GST is Required" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtGST" ValidationGroup="sub" ForeColor="#ff5666"></asp:RequiredFieldValidator>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD License No</label>
-
-                            <div class="col-sm-9">
-                                <asp:TextBox ID="txtLicense" MaxLength="20" runat="server" CssClass="form-control"></asp:TextBox>
-                                <small>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Vendor GST is Required" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtLicense" ValidationGroup="sub" ForeColor="#ff5666"></asp:RequiredFieldValidator>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Aadhar No</label>
-
-                            <div class="col-sm-9">
-                                <asp:TextBox ID="txtAadhar" MaxLength="16" runat="server" CssClass="form-control"></asp:TextBox>
-                                <small>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Vendor Aadhar is Required" Display="Dynamic" SetFocusOnError="true" ControlToValidate="txtAadhar" ValidationGroup="sub" ForeColor="#ff5666"></asp:RequiredFieldValidator>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Brand</label>
-
-                            <div class="col-sm-9">
-                                <asp:DropDownList ID="drpBrand" AutoPostBack="true" CssClass="form-control" runat="server">
-                                    <asp:ListItem>Samsung</asp:ListItem>
-                                    <asp:ListItem>Apple</asp:ListItem>
+                                <asp:DropDownList ID="drpType" runat="server" CssClass="form-control">
+                                    <asp:ListItem>Flying Customer</asp:ListItem>
+                                    <asp:ListItem>Fixed Customer</asp:ListItem>
                                 </asp:DropDownList>
-                                <small>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Vendor Brand is Required" Display="Dynamic" SetFocusOnError="true" ControlToValidate="drpBrand" ValidationGroup="sub" ForeColor="#ff5666"></asp:RequiredFieldValidator>
-                                </small>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">VD Status</label>
+                            <label class="col-sm-3 col-form-label">CST Status</label>
 
                             <div class="col-sm-9">
                                 <asp:DropDownList ID="drpStatus" runat="server" CssClass="form-control">
@@ -220,8 +168,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" ValidationGroup="sub" runat="server" Text="Update Vendor" CssClass="btn btn-success" />
-                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                            <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" ValidationGroup="sub" runat="server" Text="Update Customer" CssClass="btn btn-success" />
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Customer</a>
                             <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" CssClass="btn btn-danger" />
                         </div>
                     </div>
@@ -243,7 +191,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    This Vendor Would Be Deleted and this action cannot be reverted!
+                    This Customer Would Be Deleted and this action cannot be reverted!
                 </div>
 
                 <!-- Modal footer -->

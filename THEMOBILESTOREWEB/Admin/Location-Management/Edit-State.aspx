@@ -51,7 +51,7 @@
 
     <!-- The Modal -->
     <div class="modal fade modal-lg" id="deleteModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <!-- Modal Header -->

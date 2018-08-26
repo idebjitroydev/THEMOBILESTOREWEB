@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 public partial class Admin_User_Management_Edit_Vendor : System.Web.UI.Page
 {
-    private Vendors v = new Vendors();
+    private Customer v = new Customer();
     private Helpers h = new Helpers();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -26,7 +26,7 @@ public partial class Admin_User_Management_Edit_Vendor : System.Web.UI.Page
         {
             try
             {
-                string qry = "SELECT * FROM tbl_vendors WHERE ID=@ID";
+                string qry = "SELECT * FROM tbl_customers WHERE ID=@ID";
                 string DCID = Helpers.Decode(Request.QueryString["id"]);
                 SqlCommand cmd = new SqlCommand(qry, conn);
                 cmd.Parameters.AddWithValue("@ID", Convert.ToInt32(DCID));
@@ -40,23 +40,19 @@ public partial class Admin_User_Management_Edit_Vendor : System.Web.UI.Page
                     txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     txtPhone.Text = ds.Tables[0].Rows[0]["Phone"].ToString();
-                    txtPhone2.Text = ds.Tables[0].Rows[0]["Phone2"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                     txtPincode.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                     txtCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
-                    txtGST.Text = ds.Tables[0].Rows[0]["GSTNo"].ToString();
-                    txtAadhar.Text = ds.Tables[0].Rows[0]["Aadhar"].ToString();
-                    txtLicense.Text = ds.Tables[0].Rows[0]["License"].ToString();
                     txtState.Text = ds.Tables[0].Rows[0]["State"].ToString();
                     drpCity.SelectedValue = ds.Tables[0].Rows[0]["City"].ToString();
-                    drpBrand.SelectedValue = ds.Tables[0].Rows[0]["Brand"].ToString();
+                    drpType.SelectedValue = ds.Tables[0].Rows[0]["Type"].ToString();
                     drpStatus.SelectedValue = ds.Tables[0].Rows[0]["Status"].ToString();
                 }
             }
             catch (Exception ex)
             {
                 popupDanger.Visible = true;
-                errMessage.InnerHtml = h.ErrMessage("Vendor", ex.Message, "Failed to Fill Data");
+                errMessage.InnerHtml = h.ErrMessage("Customer", ex.Message, "Failed to Fill Data");
             }
             finally
             {
@@ -150,30 +146,26 @@ public partial class Admin_User_Management_Edit_Vendor : System.Web.UI.Page
             v.Name = h.Format(txtName.Text);
             v.Email = txtEmail.Text;
             v.Phone = txtPhone.Text;
-            v.Phone2 = txtPhone2.Text;
             v.Address = txtAddress.Text;
             v.City = drpCity.SelectedValue.ToString();
             v.State = txtState.Text;
             v.Pincode = txtPincode.Text;
             v.Country = txtCountry.Text;
-            v.GSTNo = txtGST.Text;
-            v.License = txtLicense.Text;
-            v.Aadhar = txtAadhar.Text;
-            v.Brand = drpBrand.SelectedValue.ToString();
             v.updated_at = DateTime.Now;
             v.updated_by = "Debjit Roy";
             v.updated_com_name = h.GetClientComputerName();
             v.Status = drpStatus.SelectedValue.ToString();
+            v.Type = drpType.SelectedValue.ToString();
             bool insert = v.Update();
             if (insert == true)
             {
                 popup.Visible = true;
-                message.InnerHtml = h.SuccessUpdated("Vendor");
+                message.InnerHtml = h.SuccessUpdated("Customer");
             }
             else
             {
                 popupDanger.Visible = true;
-                errMessage.InnerHtml = h.ErrorUpdate("Vendor", v.Error);
+                errMessage.InnerHtml = h.ErrorUpdate("Customer", v.Error);
             }
         }
     }
@@ -184,7 +176,7 @@ public partial class Admin_User_Management_Edit_Vendor : System.Web.UI.Page
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        h.Redirect("~/Admin/User-Management/All-Vendors.aspx");
+        h.Redirect("~/Admin/User-Management/All-Customers.aspx");
     }
 
     #endregion BACK BUTTON CLICK EVENT
@@ -192,15 +184,15 @@ public partial class Admin_User_Management_Edit_Vendor : System.Web.UI.Page
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         string DCID = Helpers.Decode(Request.QueryString["id"]);
-        bool Deleted = h.Delete("tbl_vendors", Convert.ToInt32(DCID));
+        bool Deleted = h.Delete("tbl_customers", Convert.ToInt32(DCID));
         if (Deleted == true)
         {
-            h.Redirect("~/Admin/User-Management/All-Vendors.aspx?success=true");
+            h.Redirect("~/Admin/User-Management/All-Customers.aspx?success=true");
         }
         else
         {
             popupDanger.Visible = true;
-            errMessage.InnerHtml = h.ErrorDelete("Employee", h.Error);
+            errMessage.InnerHtml = h.ErrorDelete("Customer", h.Error);
         }
     }
 }

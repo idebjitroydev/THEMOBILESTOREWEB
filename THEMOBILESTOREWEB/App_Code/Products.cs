@@ -13,7 +13,7 @@ public class Products
     public Decimal CostPrice { get; set; }
     public Decimal SellingPrice { get; set; }
     public Decimal Discount { get; set; }
-    public int Stock { get; set; }
+    public Int32 Stock { get; set; }
     public DateTime created_at { get; set; }
     public DateTime updated_at { get; set; }
     public string created_by { get; set; }
@@ -34,9 +34,9 @@ public class Products
             try
             {
                 string qry = "INSERT INTO tbl_products (Product_No ,Name,Code,Barcode,Category,Brand,CostPrice," +
-                    "SellingPrice, Stock, created_at, created_by, created_com_name, Status) VALUES " +
+                    "SellingPrice,Stock,Discount, created_at, created_by, created_com_name, Status) VALUES " +
                     "(@Product_No, @Name, @Code, @Barcode, @Category, @Brand, @CostPrice," +
-                    "@SellingPrice, @Stock, @created_at,@created_by, @created_com_name, @Status)";
+                    "@SellingPrice, @Stock,@Discount, @created_at,@created_by, @created_com_name, @Status)";
                 SqlCommand cmd = new SqlCommand(qry, conn);
                 cmd.Parameters.AddWithValue("@Product_No", this.Product_No);
                 cmd.Parameters.AddWithValue("@Name", this.Name);
@@ -47,6 +47,7 @@ public class Products
                 cmd.Parameters.AddWithValue("@CostPrice", this.CostPrice);
                 cmd.Parameters.AddWithValue("@SellingPrice", this.SellingPrice);
                 cmd.Parameters.AddWithValue("@Stock", this.Stock);
+                cmd.Parameters.AddWithValue("@Discount", this.Discount);
                 cmd.Parameters.AddWithValue("@created_at", this.created_at);
                 cmd.Parameters.AddWithValue("@created_by", this.created_by);
                 cmd.Parameters.AddWithValue("@created_com_name", this.created_com_name);
@@ -85,11 +86,12 @@ public class Products
         {
             try
             {
-                string qry = "UPDATE tbl_categories SET Product_No = @Product_No, Name = @Name, Code = @Code, Barcode = @Barcode, Category = @Category, " +
+                string qry = "UPDATE tbl_products SET Product_No = @Product_No, Name = @Name, Code = @Code, Barcode = @Barcode, Category = @Category, " +
                     "Brand = @Brand, CostPrice = @CostPrice," +
-                    "SellingPrice = @SellingPrice, Stock = @Stock, updated_at = @updated_at,updated_by = @updated_by, " +
-                    "Status = @Status, updated_com_name = @updated_com_name WHERE ID = @ID";
+                    "SellingPrice = @SellingPrice,Discount=@Discount, updated_at = @updated_at,updated_by = @updated_by, " +
+                    "Status = @Status,Stock=@Stock, updated_com_name = @updated_com_name WHERE ID = @ID";
                 SqlCommand cmd = new SqlCommand(qry, conn);
+                cmd.Parameters.AddWithValue("@ID", this.ID);
                 cmd.Parameters.AddWithValue("@Product_No", this.Product_No);
                 cmd.Parameters.AddWithValue("@Name", this.Name);
                 cmd.Parameters.AddWithValue("@Code", this.Code);
@@ -99,6 +101,7 @@ public class Products
                 cmd.Parameters.AddWithValue("@CostPrice", this.CostPrice);
                 cmd.Parameters.AddWithValue("@SellingPrice", this.SellingPrice);
                 cmd.Parameters.AddWithValue("@Stock", this.Stock);
+                cmd.Parameters.AddWithValue("@Discount", this.Discount);
                 cmd.Parameters.AddWithValue("@updated_at", this.updated_at);
                 cmd.Parameters.AddWithValue("@updated_by", this.updated_by);
                 cmd.Parameters.AddWithValue("@updated_com_name", this.updated_com_name);

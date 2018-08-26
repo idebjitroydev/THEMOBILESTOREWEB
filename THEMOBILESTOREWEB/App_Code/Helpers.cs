@@ -224,7 +224,7 @@ public class Helpers
 
     public string ErrorUpdate(string Taxonomy, string Error)
     {
-        string msg = "<strong>Oops!</strong> Something wrong happened while uodating " + Taxonomy + " " + Error;
+        string msg = "<strong>Oops!</strong> Something wrong happened while updating " + Taxonomy + " " + Error;
         return msg;
     }
 
@@ -280,4 +280,22 @@ public class Helpers
     }
 
     #endregion REDIRECT
+
+    #region GET COUNT
+
+    public string Count(string tableName)
+    {
+        string count;
+        using (SqlConnection conn = new SqlConnection(Database.connection))
+        {
+            string qry = "SELECT COUNT(ID) FROM " + tableName + "";
+            SqlCommand cmd = new SqlCommand(qry, conn);
+            conn.Open();
+            int rows = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+            return count = rows.ToString();
+        }
+    }
+
+    #endregion GET COUNT
 }

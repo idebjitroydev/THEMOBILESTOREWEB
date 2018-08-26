@@ -19,13 +19,13 @@ public partial class Admin_User_Management_All_Vendors : System.Web.UI.Page
         if (Request.QueryString["reset"] == "true")
         {
             popup.Visible = true;
-            message.InnerHtml = h.SuccessMessage("Vendors", "Table Successfully Reseted");
+            message.InnerHtml = h.SuccessMessage("Customers", "Table Successfully Reseted");
         }
 
         if (Request.QueryString["success"] == "true")
         {
             popup.Visible = true;
-            message.InnerHtml = h.SuccessDeleted("Vendor");
+            message.InnerHtml = h.SuccessDeleted("Customer");
         }
     }
 
@@ -35,7 +35,7 @@ public partial class Admin_User_Management_All_Vendors : System.Web.UI.Page
 
     public void FillData()
     {
-        DataSet ds = h.Select("tbl_vendors", "Name");
+        DataSet ds = h.Select("tbl_customers", "Name");
         if (ds.Tables[0].Rows.Count > 0)
         {
             dgVendors.DataSource = ds;
@@ -51,15 +51,15 @@ public partial class Admin_User_Management_All_Vendors : System.Web.UI.Page
     {
         if (Page.IsValid)
         {
-            bool reset = h.Truncate("tbl_vendors");
+            bool reset = h.Truncate("tbl_customers");
             if (reset == false)
             {
-                Response.Redirect("~/Admin/User-Management/All-Vendors.aspx?reset=true");
+                Response.Redirect("~/Admin/User-Management/All-Customers.aspx?reset=true");
             }
             else
             {
                 popupDanger.Visible = true;
-                errMessage.InnerHtml = h.ErrMessage("Vendor", h.Error, "Table Reset Failed");
+                errMessage.InnerHtml = h.ErrMessage("Customer", h.Error, "Table Reset Failed");
             }
         }
     }
@@ -74,7 +74,7 @@ public partial class Admin_User_Management_All_Vendors : System.Web.UI.Page
         GridViewRow gvr = (GridViewRow)lb.Parent.Parent;
         hdid.Value = ((HiddenField)gvr.FindControl("hdID")).Value.ToString();
         string ENID = Helpers.Encode(hdid.Value);
-        Response.Redirect("~/Admin/User-Management/Edit-Vendor.aspx?id=" + ENID);
+        Response.Redirect("~/Admin/User-Management/Edit-Customer.aspx?id=" + ENID);
     }
 
     #endregion EDIT BUTTON CLICK EVENT

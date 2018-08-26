@@ -1,4 +1,4 @@
-﻿<%@ Page Title="View All Products" Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true" CodeFile="All-Products.aspx.cs" Inherits="Admin_Product_Management_All_Products" %>
+﻿<%@ Page Title="View All Customers" Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true" CodeFile="All-Customers.aspx.cs" Inherits="Admin_User_Management_All_Vendors" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <!-- inject:js -->
@@ -30,23 +30,24 @@
                         </div>
                         <div class="col-md-6">
                             <p class="text-right">
-                                <a href="/Admin/Product-Management/Add-Product.aspx" class="btn btn-success">Add New Product</a>
+                                <a href="/Admin/User-Management/Add-Customer.aspx" class="btn btn-success">Add New Customer</a>
                             </p>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <asp:GridView ID="dgProducts" OnPageIndexChanging="dgProducts_PageIndexChanging" PagerSettings-Mode="NumericFirstLast" PagerStyle-CssClass="pagination-ys" runat="server" AllowPaging="true" PageSize="10" CssClass="table table-striped border-white" AutoGenerateColumns="false">
+                        <asp:GridView ID="dgVendors" OnPageIndexChanging="dgVendors_PageIndexChanging" PagerSettings-Mode="NumericFirstLast" PagerStyle-CssClass="pagination-ys" runat="server" AllowPaging="true" PageSize="10" CssClass="table table-striped border-white" AutoGenerateColumns="false">
                             <Columns>
                                 <%--<asp:BoundField DataField="ID" HeaderText="State ID" />--%>
-                                <asp:BoundField DataField="Name" HeaderText="Product Name" />
-                                <asp:BoundField DataField="Status" HeaderText="Product Status" />
+                                <asp:BoundField DataField="Name" HeaderText="Customer Name" />
+                                <asp:BoundField DataField="Phone" HeaderText="Customer Phone" />
+                                <%--<asp:BoundField DataField="Type" HeaderText="Employee Type" />--%>
                                 <asp:BoundField DataField="created_at" HeaderText="Created At" />
                                 <asp:BoundField DataField="updated_at" HeaderText="Updated At" />
                                 <%--<asp:CommandField ShowEditButton="true" />--%>
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:HiddenField ID="hdID" Value='<%#Eval("ID") %>' runat="server" />
-                                        <asp:LinkButton runat="server" CssClass="btn btn-primary btn-xs" ID="btnEdit" OnClick="btnEdit_Click">Edit Product</asp:LinkButton>
+                                        <asp:LinkButton runat="server" CssClass="btn btn-primary btn-xs" ID="btnEdit" OnClick="btnEdit_Click">Edit Customer</asp:LinkButton>
                                     </ItemTemplate>
                                     <HeaderTemplate>
                                         Actions
@@ -79,7 +80,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Type Reset to <strong>DELETE</strong> all Data From Products
+                    Type Reset to <strong>DELETE</strong> all Data From Customers
                     <asp:TextBox ID="txtReset" runat="server" CssClass="form-control resetBox"></asp:TextBox>
                     <small>
                         <asp:CustomValidator ID="ResetValidator" runat="server" OnServerValidate="ResetValidator_ServerValidate" ErrorMessage="You Need To Type <strong>Reset</strong> to Proceed" ControlToValidate="txtReset" ForeColor="#ff5666"></asp:CustomValidator>
