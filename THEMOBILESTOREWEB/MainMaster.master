@@ -1,0 +1,184 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMaster.master.cs" Inherits="MainMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Mobile Store &ndash; <%= Page.Title %></title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Content/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/Content/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+            <a class="navbar-brand brand-logo" href="index.html">
+                <img src="../../../Content/images/tmsLogo.svg" alt="logo" style="width: 100%;" />
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="index.html">
+                <img src="../../../Content/images/tmsLogo-sm.svg" alt="logo" />
+            </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown d-none d-xl-inline-block">
+                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                        <span class="profile-text">👋 Hello, Richard V.Welsh !</span>
+                        <img class="img-xs rounded-circle" src="../../../Content/images/faces/face1.jpg" alt="Profile image">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                        <a class="dropdown-item p-0"></a>
+                        <a class="dropdown-item mt-2">Manage Accounts</a>
+                        <a class="dropdown-item">Change Password</a>
+                        <a class="dropdown-item">Check Inbox</a>
+                        <a class="dropdown-item">Sign Out</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="mdi mdi-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item nav-profile">
+                    <div class="nav-link">
+                        <div class="user-wrapper">
+                            <div class="profile-image">
+                                <img src="../../../Content/images/faces/face1.jpg" alt="profile image">
+                            </div>
+                            <div class="text-wrapper">
+                                <p class="profile-name">Richard V.Welsh</p>
+                                <div>
+                                    <small class="designation text-muted">Administrator</small>
+                                    <span class="status-indicator online"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <%--<button class="btn btn-success btn-block">
+                            New Project
+
+                            <i class="mdi mdi-plus"></i>
+                        </button>--%>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Dashboard.aspx">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="menu-icon mdi mdi-map-marker"></i>
+                        <span class="menu-title">Location Management</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Location-Management/All-Cities.aspx">Cities</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Location-Management/All-States.aspx">States</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="auth">
+                        <i class="menu-icon mdi mdi-account-circle"></i>
+                        <span class="menu-title">Users Management</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="users">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/User-Management/All-Employees.aspx">Employees </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/User-Management/All-Vendors.aspx">Vendors </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="auth">
+                        <i class="menu-icon mdi mdi-shopping"></i>
+                        <span class="menu-title">Products Management</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="products">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Product-Management/All-Products.aspx">Products </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Product-Management/All-Categories.aspx">Categories </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Product-Management/All-Brands.aspx">Brands </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <form id="form1" runat="server">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+
+                        <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+
+                        <i class="mdi mdi-heart text-danger"></i>
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+    </div>
+
+    <!-- plugins:js -->
+    <script src="../../../Content/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../../Content/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../../Content/js/off-canvas.js"></script>
+    <script src="../../../Content/js/misc.js"></script>
+    <!-- endinject -->
+</body>
+</html>
